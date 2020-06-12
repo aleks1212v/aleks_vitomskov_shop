@@ -11,14 +11,14 @@
         android:theme="@style/AppTheme">
 
         <activity android:name="com.example.aleks_vitomskov_shop.ui.CheckoutActivity" />
-        <activity android:name="com.example.aleks_vitomskov_shop.ui.BasketActivity" />
-        <activity android:name="com.example.aleks_vitomskov_shop.ui.ProductActivity" />
-        <activity android:name="com.example.aleks_vitomskov_shop.ui.CatalogActivity">
+        <activity android:name="com.example.aleks_vitomskov_shop.ui.BasketActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.aleks_vitomskov_shop.ui.ProductActivity" />
+        <activity android:name="com.example.aleks_vitomskov_shop.ui.CatalogActivity" />
 
     </application>
 

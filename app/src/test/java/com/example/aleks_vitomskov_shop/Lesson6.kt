@@ -1,4 +1,3 @@
-package com.example.aleks_vitomskov_shop
 import org.junit.Test
 
 class Lesson6 {
@@ -32,6 +31,7 @@ class Presenter() {
     fun productNamePricePrint(){
         products.forEach(){
                 product->pricePrinter.print("${product.getProductName()} : ${product.calcDiscountPrice()}")
+//                product->pricePrinter.print(product.getProductName(), product.calcDiscountPrice())
         }
     }
 }
