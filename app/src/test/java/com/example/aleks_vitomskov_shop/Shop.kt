@@ -1,5 +1,6 @@
 package com.example.aleks_vitomskov_shop
 
+import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -9,24 +10,32 @@ import org.junit.Test
  * в разных частях программы.
  * Оценка будет выставляться в зависимости от простоты и читаемости решения:
  */
-class Project4 {
+class Shop {
 
     @Test
     fun example() {
 
         val iphoneCase = Product(price = 100.0, salePercent = 10)
+        val samsungCase = Product(price = 50.0, salePercent = 5)
+        val universalCase = Product(price=200.0, salePercent = 50)
 
-        val pricePrinter1: PricePrinter = CleanKotlinPriceFormatter()
+        val pricePrinter1 = CleanKotlinPriceFormatter()
         val pricePrinter2: PricePrinter = NonCleanKotlinPriceFormatter()
         val pricePrinter3: PricePrinter = NoPriceFormatter()
 
         val discountIphoneCasePrice = iphoneCase.calcDiscountPrice()
 
-        pricePrinter1.printPrice(discountIphoneCasePrice)
+        /*pricePrinter1.printPrice(discountIphoneCasePrice)
         pricePrinter2.printPrice(discountIphoneCasePrice)
-        pricePrinter3.printPrice(discountIphoneCasePrice)
+        pricePrinter3.printPrice(discountIphoneCasePrice)*/
 
-        assertEquals(0, 0)
+        val products = listOf<Product>(iphoneCase, samsungCase, universalCase)
+        val basket = Basket(products = products)
+        val sumPrice = basket.commonPrice()
+
+        pricePrinter1.printSum(sumPrice)
+
+        Assert.assertEquals(0, 0)
     }
 
 
@@ -44,6 +53,24 @@ class Project4 {
          * If [salePercent] less than 0 product price will be increased
          */
         fun calcDiscountPrice(): Double = price * (1 - salePercent / 100.0)
+    }
+
+    interface Saveble {
+        /*interface for basket*/
+        fun commonPrice(): Double
+    }
+
+    class Basket(
+        private val products: List<Product> ) : Saveble
+    {
+        override fun commonPrice(): Double {
+            var sumPrice: Double = 0.0
+            products.forEach { product ->
+                val discountPrice = product.calcDiscountPrice()
+                sumPrice += discountPrice
+            }
+            return sumPrice
+        }
     }
 
     interface PricePrinter {
@@ -64,6 +91,9 @@ class Project4 {
             } else {
                 println(price)
             }
+        }
+        fun printSum(price:Double){
+            print("Сумма цен со скидкой: $price")
         }
     }
 
