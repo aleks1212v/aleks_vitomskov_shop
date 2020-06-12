@@ -10,7 +10,7 @@ import org.junit.Test
  * в разных частях программы.
  * Оценка будет выставляться в зависимости от простоты и читаемости решения:
  */
-class Shop {
+class Lesson5 {
 
     @Test
     fun example() {

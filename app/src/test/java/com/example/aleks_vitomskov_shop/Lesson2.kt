@@ -14,7 +14,7 @@ import org.junit.Test
 Если цена дробная - вывести её с точностью до 2 символа
 */
 
-class PricePrinter {
+class Lesson2 {
     fun PriceFormat(price : Double, measure: String, discount: Int = 0) : String{
         val finalPrice : String
         if((discount > 0) and (discount <= 100)){
